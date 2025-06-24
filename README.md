@@ -46,28 +46,23 @@ Click Get Recommendations to view the top 5 similar products based on purchase h
 
 Methodology
 Data Preprocessing
-Clean data by removing missing CustomerIDs and cancelled orders.
-
-Filter out negative or zero quantities and prices.
+--Clean data by removing missing CustomerIDs and cancelled orders.
+--Filter out negative or zero quantities and prices.
 
 RFM Feature Engineering
-Calculate Recency, Frequency, and Monetary values per customer.
+--Calculate Recency, Frequency, and Monetary values per customer.
 
 Scale features before clustering.
 
 Clustering
-Apply KMeans clustering for customer segmentation.
-
-Evaluate cluster quality using silhouette scores and elbow method.
-
-Label clusters for business interpretation.
+--Apply KMeans clustering for customer segmentation.
+--Evaluate cluster quality using silhouette scores and elbow method.
+--Label clusters for business interpretation.
 
 Recommendation System
-Create CustomerID-Product purchase matrix.
-
-Compute cosine similarity between products.
-
-Recommend top 5 similar products for a given product input.
+--Create CustomerID-Product purchase matrix.
+--Compute cosine similarity between products.
+--Recommend top 5 similar products for a given product input.
 
 Technologies Used
 Python (Pandas, NumPy, Scikit-learn)
@@ -76,13 +71,7 @@ Collaborative Filtering, KMeans Clustering
 
 Streamlit for web app interface
 
-Data Visualization (Matplotlib, Seaborn)
+Data Visualization (Matplotlib, Seaborn,Plotly)
 
-Future Work
-Incorporate additional features like customer demographics for better segmentation.
-
-Enhance recommendation system using hybrid filtering methods.
-
-Deploy the app on cloud platforms for broader accessibility.
 
 
