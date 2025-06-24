@@ -6,62 +6,83 @@ Project Overview
 In the dynamic and highly competitive e-commerce industry, understanding customer behavior is crucial for driving growth and enhancing customer experience. This project, Shopper Spectrum, leverages transactional data from an online retail platform to segment customers based on their purchasing behavior and deliver personalized product recommendations. Using unsupervised machine learning techniques and collaborative filtering, the project provides actionable insights to support targeted marketing, customer retention, and inventory management.
 
 
-Objectives
---Customer Segmentation: Identify distinct customer groups based on Recency, Frequency, and Monetary (RFM) analysis to tailor marketing strategies and improve customer retention.
---Product Recommendations: Develop an item-based collaborative filtering system to recommend relevant products to users based on purchase history similarity.
---Business Impact: Enable data-driven decisions for targeted promotions, personalized shopping experiences, and optimized inventory management.
+Features
+1. Customer Segmentation
+Segments customers into meaningful groups (High-Value, Regular, Occasional, At-Risk) using clustering algorithms like KMeans.
+Uses RFM metrics as input features to identify purchasing behavior.
+Enables targeted marketing strategies and customer retention programs.
+
+2. Product Recommendation
+Provides top 5 similar product recommendations based on item-item collaborative filtering.
+Calculates product similarity using cosine similarity on purchase history data.
+Enhances user shopping experience by offering relevant product suggestions.
+
+3. Streamlit Web Application
+User-friendly interface for inputting customer RFM values or product names.
+Interactive buttons to toggle between segmentation and recommendation modules.
+Real-time prediction and recommendation display.
 
 Dataset
-The project uses a public e-commerce transaction dataset spanning 2022–2023, including key fields such as InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, and Country. The data captures detailed customer purchases, allowing for deep behavioral analysis.
+The project uses a public e-commerce transactional dataset containing:
+InvoiceNo: Transaction number,
+StockCode: Unique product/item code,
+Description: Product name,
+Quantity: Number of items purchased,
+InvoiceDate: Date and time of purchase,
+UnitPrice: Price per item,
+CustomerID: Unique customer identifier,
+Country: Customer location
 
+Usage
+Customer Segmentation Module
+Input Recency (days since last purchase), Frequency (number of purchases), and Monetary (total spend).
+
+Click Predict Cluster to get the customer segment label.
+
+Product Recommendation Module
+Enter a product name in the text box.
+
+Click Get Recommendations to view the top 5 similar products based on purchase history.
+
+Methodology
 Data Preprocessing
---Removed entries with missing CustomerID to ensure accuracy.
---Excluded cancelled invoices to focus on completed transactions.
---Filtered out transactions with negative or zero quantities and prices to maintain data integrity.
+Clean data by removing missing CustomerIDs and cancelled orders.
 
-Exploratory Data Analysis (EDA)
---Analyzed transaction volume and purchase trends across countries.
---Identified top-selling products and their popularity distribution.
---Visualized monetary values and RFM score distributions to understand customer behavior patterns.
---Used elbow method and silhouette scores to guide cluster number selection.
+Filter out negative or zero quantities and prices.
 
-Customer Segmentation Methodology
---Engineered RFM features:
-    Recency: Days since the last purchase.
-    Frequency: Number of purchases.
-    Monetary: Total spend.
---Scaled RFM features for uniformity.
---Applied clustering algorithms (KMeans, DBSCAN, Hierarchical) and evaluated performance to select the optimal model.
---Labeled clusters based on average RFM values:
-    High-Value: Frequent, recent, and high spenders.
-    Regular: Steady purchasers with medium spending.
-    Occasional: Rare buyers with low spend.
-    At-Risk: Customers who haven’t purchased recently.
---Visualized clusters through 2D/3D plots for interpretability.
+RFM Feature Engineering
+Calculate Recency, Frequency, and Monetary values per customer.
 
-Recommendation System Approach
---Built an item-based collaborative filtering model using customer purchase history.
---Calculated cosine similarity between products to identify relationships.
---Developed a recommendation function to return the top 5 similar products given any product input.
+Scale features before clustering.
 
-Streamlit Application Features
---Product Recommendation Module: User inputs a product name to receive top 5 similar product recommendations displayed in a user-friendly layout.
---Customer Segmentation Module: User inputs RFM values and receives a predicted customer segment label instantly.
-Interactive UI elements enable seamless, real-time predictions to support marketing and sales decisions.
+Clustering
+Apply KMeans clustering for customer segmentation.
 
-Skills and Techniques Applied
---Data exploration and cleaning with Pandas and NumPy
---Feature engineering and scaling using Scikit-learn’s StandardScaler
---Clustering and unsupervised machine learning with KMeans, DBSCAN, and hierarchical algorithms
---Collaborative filtering and similarity computations
---Model evaluation with silhouette scores and elbow method
---Data visualization (plots, heatmaps) to communicate findings
---Streamlit for building interactive, real-time web applications
+Evaluate cluster quality using silhouette scores and elbow method.
 
-Business Use Cases
---Targeted marketing campaigns tailored to customer segments
---Personalized product recommendations enhancing shopping experience
---Identifying at-risk customers for retention efforts
---Dynamic pricing and stock management based on customer demand patterns
+Label clusters for business interpretation.
 
-This project offers a comprehensive data science pipeline from raw data preprocessing to deployment of a real-time web app, showcasing a practical solution for customer insight and recommendation challenges in e-commerce.
+Recommendation System
+Create CustomerID-Product purchase matrix.
+
+Compute cosine similarity between products.
+
+Recommend top 5 similar products for a given product input.
+
+Technologies Used
+Python (Pandas, NumPy, Scikit-learn)
+
+Collaborative Filtering, KMeans Clustering
+
+Streamlit for web app interface
+
+Data Visualization (Matplotlib, Seaborn)
+
+Future Work
+Incorporate additional features like customer demographics for better segmentation.
+
+Enhance recommendation system using hybrid filtering methods.
+
+Deploy the app on cloud platforms for broader accessibility.
+
+
